@@ -1,0 +1,44 @@
+﻿body {
+}
+
+.mtable {
+	width:100%;
+
+}
+
+.mtable td{
+	
+	
+
+}
+
+.left {
+	padding-left: 4vw;
+	background: #dddddd;
+	width: 25%;
+}
+	
+.right{
+
+	background: #eeeeee;
+	width: 65%;
+	padding-left:10vw;
+}
+.bt9 {
+	margin-right:25px ;
+}
+
+ .pressed { 
+            height:100%;
+           font-size:3.5vw; 
+           font-weight:bold;
+          padding: 10px; /*отступы в блоке до текста*/ 
+          background: #f1f1f1; /*фон блока*/ 
+          border: 1px solid #000; /*граница блока*/ 
+          border-right: 1px solid #353535; /*граница блока*/ 
+          border-bottom: 1px solid #353535; /*граница блока*/ 
+          -webkit-border-radius: 9px; /*закругление углов на число пикселей для Webkit */ 
+          -moz-border-radius: 9px; /*закругление углов на число пикселей для Mozilla */ 
+          border-radius: 9px; /*закругление углов на число пикселей*/ 
+          position:relative;
+}
