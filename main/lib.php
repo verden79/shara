@@ -33,9 +33,9 @@ define ('pFbonus' , 'Fbonus');
 class BaseUsers
 {
   var   $server = 'localhost';
-  var 	$user = 'root';
-  var	$password = 'root';
-  var	$bd = 'mydb';
+  var 	$user = 'user59689_admin911';
+  var	$password = 'vertikal';
+  var	$bd = 'user59689_sharadb';
   var	$table = 'users';
   var   $in;
 

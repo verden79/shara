@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+ <meta charset="utf-8" />
  
  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <link href="../css/index.css" rel="stylesheet" />

@@ -14,9 +14,9 @@ $mysqli = new BaseUsers();
        session_start();
        $_SESSION['id'] = $us->id;
        header("Location: cab.php");    }
-      else  printf('неверный пароль');
+      else  printf('wrong password');
 	}
- 	else echo ' нет такого ';
+ 	else echo ' No user';
 
 
  $mysqli->close();
