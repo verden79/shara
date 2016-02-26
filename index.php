@@ -10,6 +10,29 @@
  
 </head>
 <body>
+	<?php 
+	 include '/main/lib.php';
+	   
+	       session_start();
+
+		   $mysqli = new BaseUsers();
+		   
+		   if (isset($_SESSION['id'])) 
+		   	{ 
+		   		if ($us = $mysqli->isUserId($_SESSION['id']))
+			 		{
+			    		$name = $us->login;
+			    		$bal = $us->bonus;	
+					$ttt = ' <a href = \'/main/cab.php\' >Пользователь -'.$name . '</a>';
+					}
+		   	}
+		   	else 
+		   		{  	$ttt = '<a href =\'main/check.php\'>Регистрация/Вход </a>'; }
+	 
+
+	?>
+
+
  
 <!-- Начало хидер -->
 <header class="header">
@@ -17,7 +40,7 @@
 	<div class="headerInner">
 	 <span>+16		
 		 <span id="htopspanc">Получите приложение LOGO для IOS и Android к себе на телефон</span>
-		 <span id="htopspanright"><div style="float: left; border-bottom: 2px dotted;">Москва</div><img style="float: right; margin-left: 0.5em; margin-top: 0.1em;" src="D:\Development\Projects\SiteEcoplan\img\x.png"></img></span>
+		 <span id="htopspanright"><div style="float: left; border-bottom: 2px dotted;">Москва</div><img style="float: right; margin-left: 0.5em; margin-top: 0.1em;" src="img/x.png"></img></span>
 	 </span>
 	</div>
 </div>
@@ -42,10 +65,19 @@
 					<img style="margin-left: 25%; height: 15px; width: 25px;" src="/img/kolCirkle.png"></img>
 				</div>
 		</div>
+		
 		<div style="float: left; height:100%; width:10%;text-align: center; border-right: 1px solid white;">
-			<div style="margin-top: 0.8em;"><span style="margin-top: 0.8em; font-size: 0.8em; ">баллы: <b>800</b></span></div>
-		</div>
-		<div  style="float: left; height:100%; width: 24%;">
+		   
+		<!-- окошко для вывода информации -->   
+	    	<div style="margin-top: 0.8em;"><span style="margin-top: 0.8em; font-size: 0.8em; ">баллы: 
+	    			  <b>  
+	    	             <?php 
+	    	                $us->bonus;  // вывод балов
+	    	              ?>
+	    	          </b></span></div>
+			</div>
+  		
+     		<div  style="float: left; height:100%; width: 24%;">
 			<div>
 				<div style="float: left; margin-left: 1em; margin-top: 0.8em; width: 40%; height:40%; background: white; text-align: center; color: #333;"><b>premium</b></div>
 				<div style="float:right; margin: 2px;">
@@ -57,7 +89,10 @@
 					</div>
 				</div>
 			</div>
-		</div>
+	    	</div>   
+
+
+
 	</div>
 </div>
 <div id="hnav">
@@ -286,5 +321,11 @@
 </div><!-- Конец футериннер -->
 </footer><!-- Конец футер -->
  
+<?php 
+
+$mysqli->close();
+
+?>
+
 </body>
 </html>

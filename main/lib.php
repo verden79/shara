@@ -33,9 +33,9 @@ define ('pFbonus' , 'Fbonus');
 class BaseUsers
 {
   var   $server = 'localhost';
-  var 	$user = 'user59689_admin911';
-  var	$password = 'vertikal';
-  var	$bd = 'user59689_sharadb';
+  var 	$user = 'root';
+  var	$password = 'root';
+  var	$bd = 'mydb';
   var	$table = 'users';
   var   $in;
 
@@ -157,7 +157,8 @@ class BaseUsers
        else return false;
     }
  	
-    function getChaild($id)
+    // возвращает массив рефералов 1 го уровня для пользователя с id  
+    function getChaild($id) 
     {
      $query = 'select * from '.$this->table.' where '.pParentId.' = \''.$id.'\'';
       $sql = $this->in; 
@@ -202,20 +203,19 @@ class BaseUsers
 
     function saveUser($us)
     {
-
     // UPDATE `mydb`.`users` SET `ParentId`='3', `Phone`='8911' WHERE `Id`='7';
 
-    $str1 = pLogin.'= \''.$us->login.'\','.pPassword.'=\''.$us->pass.'\','.pEmail.'=\''.$us->email.'\','.pParentId.'=\''.$us->parentId.'\',';
-    $str2 = pBonus.'=\''.$us->bonus.'\','.pPhone.'=\''.$us->phone.'\','.pPremium.'=\''.$us->premium.'\','.pFbonus.'=\''.$us->fbonus.'\' ' ;
-    $str3 = 'where '.pId.' = '.$us->id;
-    
+      $str1 = pLogin.'= \''.$us->login.'\','.pPassword.'=\''.$us->pass.'\','.pEmail.'=\''.$us->email.'\','.pParentId.'=\''.$us->parentId.'\',';
+      $str2 = pBonus.'=\''.$us->bonus.'\','.pPhone.'=\''.$us->phone.'\','.pPremium.'=\''.$us->premium.'\','.pFbonus.'=\''.$us->fbonus.'\' ' ;
+      $str3 = 'where '.pId.' = '.$us->id;
+      
 
-      $query = 'update '.$this->table.' set '.$str1.$str2.$str3;
-      $sql = $this->in; 
-    
-     
-       if ($res = $sql->query($query))    return 1001;
-       else return 'ошибка доступа к базе';
+        $query = 'update '.$this->table.' set '.$str1.$str2.$str3;
+        $sql = $this->in; 
+      
+       
+         if ($res = $sql->query($query))    return 1001;
+         else return 'ошибка доступа к базе';
     }
 
      // распределение по деверву вверх бонусных очков. за вступление
@@ -346,6 +346,8 @@ class User
   var $phone;  // телефон 
   var $premium; // есть ли премиум акаунт;
   var $conect; //ссылка на конект.
+
+  var $referal_count; // количество рефералов
   
 
   public function __construct($con, $idz,$loginz,$passz,$emailz,$parentIdz,$bonusz,$phonez,$premiumz,$fbonuz)
@@ -365,10 +367,18 @@ class User
 
   function saveUsers()   // сохранить юзера в таблице
   {
-
   }
 
-  
+  function getCountReferal()  // подсчитывает количество рефералов юзера
+  {
+    $icount=0; 
+        $rowl = $conect->getChaild($fid);   
+        if ( $rowl[0] != 0) {
+              $this->referal_count = count($rowl); 
+              return $this->referal_count;             
+          } 
+          else return 0;
+  } // конец функции 
 }
 
 ?>

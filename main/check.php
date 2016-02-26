@@ -25,7 +25,7 @@
     <h1> Вход в кабинет </h1>  <hr> 
 
           <ul class="nav nav-pills">
-            <li role="presentation"><a href="../index.html">На главную</a></li>
+            <li role="presentation"><a href="../index.php">На главную</a></li>
             <li role="presentation" class="active" ><a href="#">Личный кабинет</a></li>
             <li role="presentation"><a href="reg.php">Присоедениться</a></li>
           </ul>

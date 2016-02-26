@@ -48,7 +48,7 @@
  	<h1> Линый кабинет </h1>  <hr> 
 
           <ul class="nav nav-pills">
-            <li role="presentation"><a href="../index.html">На главную</a></li>
+            <li role="presentation"><a href="../index.php">На главную</a></li>
             <li role="presentation" class="active"><a href="check.php">Личный кабинет</a></li>
            
           </ul>
