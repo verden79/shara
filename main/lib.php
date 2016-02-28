@@ -33,11 +33,13 @@ define ('pFbonus' , 'Fbonus');
 class BaseUsers
 {
   var   $server = 'localhost';
-  var 	$user = 'root';
-  var	$password = 'root';
-  var	$bd = 'mydb';
-  var	$table = 'users';
-  var   $in;
+  var   $user = 'root';
+  var $password = 'root';
+  var $bd = 'mydb';
+  var $table = 'users';   
+ var   $in;
+ 
+ 
 
     function __construct()
     {
@@ -346,6 +348,8 @@ class User
   var $phone;  // телефон 
   var $premium; // есть ли премиум акаунт;
   var $conect; //ссылка на конект.
+  // 2 таблица данных
+  var $photo;  // url photo
 
   var $referal_count; // количество рефералов
   
@@ -380,5 +384,14 @@ class User
           else return 0;
   } // конец функции 
 }
+
+
+// класс по управлению проектом
+class  sharaEngine  
+{
+
+
+}
+
 
 ?>

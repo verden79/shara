@@ -17,3 +17,10 @@ function onAjaxSuccess(data)
   // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
  document.getElementById('bbox').innerHTML = data;
  }  
+
+
+function bon(data)
+{
+  // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
+ document.getElementById('bbal').innerHTML = data;
+ }  

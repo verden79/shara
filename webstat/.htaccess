@@ -1,7 +1,0 @@
-AuthType Basic
-AuthName "/www/12tt.ru/webstat"
-AuthUserFile /var/www/user59689/data/etc/54268077.passwd
-DirectoryIndex index.html
-<Limit GET POST>
-	require valid-user
-</Limit>

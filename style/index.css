@@ -35,7 +35,8 @@ a:hover {
 
  #htop{
 	 height:1.5em;
-	 background: #EDEFED;
+	 background: #e5e5e5;
+	 color: #222222;
 	 /*padding-bottom: 0.3em;*/
  }
  #htopspanc{
@@ -47,12 +48,12 @@ a:hover {
  #hinfo{
 	 
 	 height:3em;
-	 background: #53AF2D;
+	 background: #7abd2c;
 	 color: white;
  }
  #hnav{
 	 height:2em;
-	 background: #333;
+	 background: #222222;
 	 color: white;
  }
 .header{
@@ -79,33 +80,36 @@ a:hover {
  left:0px;
  top:0px;
  border: 0px solid #1FA2E1;
- padding-top: 0.8em
+ padding-top: 0.8em;
+ width: 100%;
  }
  
 .topMenuRight ul li {
  
  float:left;
+ width: 24%;
+ margin-left:  1%;
  /*height: 57px;*/
  }
  
 .topMenuRight ul {
- padding-left:0px;
+ width: 100%;
+ text-align: center;
  }
  
 .topMenuRight ul li a{
  font-weight:100;
  display: block;
- color:#fff;
+ color:#cce9ab;
  text-decoration:none;
  line-height:20px;
- font-size:18px;
- padding-left: 1em;
+ font-size:15px;
  }
  
 .topMenuRight ul li a:hover{
  /* background: #fff; */
- color:#FFBE00;
- font-weight:10;
+ color:#ffffff;
+ font-weight:normal;
  }
  
  
@@ -113,16 +117,17 @@ a:hover {
 	position: absolute;
 	width: 60%;
 	height: inherit;
+	border-left: 1px solid #757575;
  }
  .navigation ul{
 	 text-align: center;
 	 height: 100%;
  }
  .navigation ul li{
-	 /* background: url(D:\\Development\\Projects\\SiteEcoplan\\img\\strel.png) 100% 100% no-repeat; */
 	 float: left;
-	 width: 16.6%;
+	 width: 16.5%;
 	 height: inherit;
+	 border-right: 1px solid #757575;
  }
  .navigation ul li:hover{
 	 background: #504D4D;
@@ -137,27 +142,176 @@ a:hover {
 	 width: 10px;
 	 height: 7.5px;
  }
+ 
+ #login{
+	 width:100%;
+	 height: 30em;
+	 text-align: center;
+	 padding-top: 5%;
+ }
+ #login #regform{
+	 width:60%;
+	 height: 80%;
+	 /* border: 1px solid black; */
+	 border-radius: 5px;
+	 border-right: 2px solid #dadddf;
+     border-bottom: 2px solid #dadddf;
+	 background: white;
+	 margin: auto;
+	 padding-top: 5%;
+	 
+ }
+ #login #regform #dvform{
+	 width: 60%;
+	 height:70%;
+	 margin:auto;
+ }
+ #login #regform #dvform h2{
+	  font-size: 25px;
+	  font-weight: normal;
+  }
+  #login #regform #dvform form{
+	  height: 100%;
+	  width: 100%;
+  }
+  #login #regform #dvform form input{
+		width: 100%;
+		height: 20%;
+		border: none;
+		border-bottom: 1px solid #e8e8e8;
+		text-align: center;
+		margin-bottom: 5%;
+}
+ #login #regform #dvform form input:active {
+	 outline: none;
+ }
+ 
+ #login #regform #dvform form input:focus{
+	 outline: none;
+ }
+ #login #regform #dvform form input::-moz-focus-inner{
+	 border:0;
+ }
+
+#login #regform #dvform form .tbin{
+	
+}
+#login #regform #dvform form a{
+	font-weight: normal;
+	color:#53AF2D;
+}
+
+#login #regform #dvform form #btsub{
+	margin-top: 15%;
+	color: white;
+	background:  #7abd2c;
+}
+
+
+
+
+
+ #register{
+	 width:100%;
+	 height: 40em;
+	 text-align: center;
+	 padding-top: 5%;
+ }
+ #register #regform{
+	 width:60%;
+	 height: 80%;
+	 /* border: 1px solid black; */
+	 border-radius: 5px;
+	 border-right: 2px solid #dadddf;
+     border-bottom: 2px solid #dadddf;
+	 background: white;
+	 margin: auto;
+	 padding-top: 5%;
+	 
+ }
+ #register #regform #dvform{
+	 width: 60%;
+	 height:70%;
+	 margin:auto;
+ }
+ #register #regform #dvform h2{
+	  font-size: 25px;
+	  font-weight: normal;
+  }
+  #register #regform #dvform form{
+	  height: 100%;
+	  width: 100%;
+  }
+  #register #regform #dvform form input{
+		width: 100%;
+		height: 15%;
+		border: none;
+		border-bottom: 1px solid #e8e8e8;
+		text-align: center;
+		margin-bottom: 5%;
+}
+ #register #regform #dvform form input:active {
+	 outline: none;
+ }
+ 
+ #register #regform #dvform form input:focus{
+	 outline: none;
+ }
+ #register #regform #dvform form input::-moz-focus-inner{
+	 border:0;
+ }
+
+#register #regform #dvform form .tbin{
+	
+}
+#register #regform #dvform form a{
+	font-weight: normal;
+	color:#53AF2D;
+}
+
+#register #regform #dvform form #btsub{
+	margin-top: 15%;
+	color: white;
+	background:  #7abd2c;
+}
+
+
+
+
+
+
+ 
  #wrapper {
 	position: relative;
 	margin-top:40px;
 	width: 100%;
 	margin: 0 auto;
 	height: 100%;
-	background: #EDEFED;
+	background: #f2f5f7;
  }
 #shares{
 	
 	height: 5em;
     padding-top: 2em;
-	border-bottom: 2px solid white;
+	border-bottom: 2px solid #e8e8e8;
 	
 }
 #shares input[type="button"]{
-	background-color : #53AF2D;
+	background-color : #7abd2c;
 	width: 100px;
     height: 50px;
 	color: white;
 	
+}
+
+#shares input[type="button"]:active{
+	outline:none;
+}
+#shares input[type="button"]:focus{
+	outline: none;
+}
+#shares input[type="button"]::-moz-focus-inner{
+	border: 0;
 }
 
 #ads{
@@ -178,19 +332,21 @@ a:hover {
 	height: 150%;
 	margin-left: 3%;
 	margin-bottom: 3%;
-	border: 1px solid black;
+	border: 1px solid #f2f5f7;
+	border-right: 1px solid #dadddf;
+	border-bottom: 1px solid #dadddf;
 	border-radius: 5px;
-	background: white;
+	background: #ffffff;
 }
 #ads ul li:hover{
 	border-color: #53AF2D;
-	color: green;
+	color: #5d5d5d;
 }
 #ads #one{
 	margin: 0 1em 0 1em;
 	height: 4.5em;
 	
-	border-bottom: 1px solid darkgray;;
+	border-bottom: 1px solid #f1f1f1;;
 }
 #ads #two{
 	height: 2em;
@@ -200,8 +356,8 @@ a:hover {
 	
 	float: right; 
 	font-size: 12px; 
-	color: darkgray;
-	border-bottom: 1px solid darkgray;
+	color: #404031;
+	border-bottom: 1px solid #ccccc7;
 	margin-right:0.5em;
 }
 #ads #two img{
@@ -213,7 +369,7 @@ a:hover {
 }
 
 #ads #three{
-	background: url(D:\\Development\\Projects\\SiteEcoplan\\img\\foto.png) 0 0 no-repeat;
+	background: url(../img/foto.png) 0 0 no-repeat;
 	height: 10em;
 	color: white;
 	
@@ -224,7 +380,7 @@ a:hover {
 	width: 40%;
 	margin-top: 0.5em;
 	margin-left: 0.5em;
-	background-color:#F74397;
+	background-color:#ff3e84;
 	border-radius: 3px;
 }
 #ads #three #metro{
@@ -233,8 +389,69 @@ a:hover {
 	width: 100%;
 	margin-top: 8em;
 	font-size: 10px;
-	background-color: black;
+	background-color: #433832;
 	opacity: 0.4;
+}
+
+#ads #fo{
+	height: 6.5em;
+	color: #323222;
+	border-bottom: 1px solid #eeeeee;
+}
+#ads #fo #buyinfo{
+	height: 2em;
+	float: left;
+	width:100%;
+}
+#ads #fo #buy{
+	float: left;
+	width:100%;
+	height: 4em;
+}
+#ads #fo #buy #bleft{
+	float: left;
+	height:100%;
+	width: 45%;
+	margin-left: 0.5em;
+	font-size: 12px;
+}
+#ads #fo #buy #bleft div{
+	height: 3em;
+	
+	border: 1px solid #bfe5aa;
+	border-radius: 5px;
+	
+}
+#ads #fo #buy #bright{
+	float: right;
+	height:100%;
+	width: 45%;
+	margin-right: 0.5em;
+	color: black;
+}
+#ads #fo #buy #bright input[type="button"]{
+	height:100%;
+	width: 100%;
+	background-color: #47ab11;
+	font-weight: bold;
+	border-radius: 5px;
+}
+#ads #fo #buy #bright input[type="button"]:active{
+	outline: none;
+}
+#ads #fo #buy #bright input[type="button"]:focus{
+	outline: none;
+}
+#ads #fo #buy #bright input[type="button"]::-moz-focus-inner {
+	border: 0;
+}
+#ads #five{
+	height: 2em;
+	color: #323222;
+	font-size: 11px;
+}
+#ads #five span{
+	border-bottom: 1px solid #323222;
 }
 /* -------------------------------
 футер блок
@@ -243,7 +460,7 @@ a:hover {
  
  height:20em;
  width:100%;
- background: #282E2F;
+ background: #222222;
  }
  
 #footerInner {
@@ -252,17 +469,26 @@ a:hover {
  border:0px solid #000;
  width:60%;
  margin:0 auto;
- height:100px;
+ height:20em;
  }
 
  .footernav {
  position:absolute;
- right:0px;
+ /* right:0px; */
+ width: 100%;
+ height: 80%;
  top:35px;
  }
  
+ .footernav ul{
+	 width: 100%;
+	 height: inherit;
+ }
 .footernav ul li {
  float:left;
+ color:white;
+ width: 17%;
+ height: 100%;
  }
  
 .footernav ul li a{
@@ -270,14 +496,18 @@ a:hover {
  font-weight:100;
  border-right:0px solid #adadad;
  display:block;
- color:#fff;
+ color:#fafafa;
  text-decoration:none;
  line-height:20px;
- font-size:18px;
- padding:0px 0px 0px 25px;
+ font-size:13px;
+ font-weight: bold;
+/*  padding:0px 0px 0px 25px; */
  }
  
 .footernav ul li a:hover{
- color:#333;
+ /* color:#333; */
  }
-
+.footernav ul li a.podfooter{
+	color: #757575;
+	font-size: 11px;
+}
