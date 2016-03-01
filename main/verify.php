@@ -13,7 +13,7 @@ $mysqli = new BaseUsers();
 
       		session_start();
         	$_SESSION['id'] = $us->id;
-       		header("Location: cab.php");    
+       		header("Location: ../cabinet.php");    
       	}
       
       else header("Location: ../login.php?er=2");     // wrong password 

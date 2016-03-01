@@ -1,4 +1,5 @@
 <?php
+include 'config.php'; 
 
  define ('pId' , 'Id');
  define ('pLogin' , 'Login');
@@ -15,9 +16,9 @@ define ('pFbonus' , 'Fbonus');
    define ('pBonPrem2',  50);
    define ('pBonPrem3',  30);
 
-  define ('pBonVip1',  120);
-   define ('pBonVip2',  50);
-   define ('pBonVip3',  30);
+  define ('pBonVip1',  150);
+   define ('pBonVip2',  60);
+   define ('pBonVip3',  40);
    
    define ('pBon1',  100);
    define ('pBon2',  35);
@@ -32,11 +33,11 @@ define ('pFbonus' , 'Fbonus');
 
 class BaseUsers
 {
-  var   $server = 'localhost';
-  var   $user = 'root';
-  var $password = 'root';
-  var $bd = 'mydb';
-  var $table = 'users';   
+  var   $server =  serverConfig ;
+  var   $user = userConfig ;
+  var   $password = passwordConfig;
+  var   $bd = bdConfig;
+  var   $table = tableConfig;   
  var   $in;
  
  
@@ -185,9 +186,9 @@ class BaseUsers
     function addUser($log,$pass,$email,$pId,$bon,$phon)
     {
     
-     if ($this->isUserLogin($log))  return 'Такой логин уже занят' ;
-     if ($this->isUserEmail($email))  return 'Такой Email уже занят' ;
-     if ($this->isUserPhone($phon))  return 'Такой phone уже существует в базе' ;
+     if ($this->isUserLogin($log))  return 'login already exists' ;
+     if ($this->isUserEmail($email))  return 'Email already exists' ;
+     if ($this->isUserPhone($phon))  return 'Phone already exists' ;
  
 
 
@@ -347,7 +348,7 @@ class User
   var $fbonus;  // фантомные бонусы.
   var $phone;  // телефон 
   var $premium; // есть ли премиум акаунт;
-  var $conect; //ссылка на конект.
+  var $conect; //ссылка на конект базы.
   // 2 таблица данных
   var $photo;  // url photo
 
@@ -373,22 +374,189 @@ class User
   {
   }
 
-  function getCountReferal()  // подсчитывает количество рефералов юзера
+  function getCountReferal($con)  // подсчитывает количество рефералов юзера
   {
-    $icount=0; 
-        $rowl = $conect->getChaild($fid);   
-        if ( $rowl[0] != 0) {
-              $this->referal_count = count($rowl); 
-              return $this->referal_count;             
-          } 
+    $i=0; 
+        $r1 = $con->getChaild($this->id);   
+        if ( $r1[0] != 0) 
+            foreach($r1 as $ch1)
+            {
+                $i++;
+                $r2 = $con->getChaild($ch1);   
+                if ( $r2[0] != 0)                   
+                    foreach($r2 as $ch2)
+                    {
+                        $i++;
+                         $r3 = $con->getChaild($ch2);   
+                         if ( $r3[0] != 0)  $i = $i + count($r3); 
+                    }
+            
+            }
+         
           else return 0;
+           return $i;
   } // конец функции 
-}
+} // конец класса
 
+// класс для отправки пользовательских данных для json
+class SendUser
+{
+  var $id;
+  var $login;    //  Login 
+  var $email;    //  Email
+  var $parentId;      //  Соддержит ссылку на пригласившего 
+  var $bonus;    //  бонусы на счету
+  var $fbonus;  // фантомные бонусы.
+  var $phone;  // телефон 
+  var $premium; // есть ли премиум акаунт;
+  var $photo;  // url photo
+  var $referal_count; // количество рефералов
+  var $kvo_otziv; // количество отзывов
+  var $web; // адресс webresurs;
+
+  public function __construct($us)
+  {
+    
+    $this->id = $us->id;
+    $this->login = $us->login;
+    $this->email =$us->email;
+    $this->parentId = $us->parentId;
+    $this->bonus =$us->bonus;
+    $this->phone = $us->phone;
+    $this->premium = $us->premium;
+    
+      $this->photo  = 'img/user/foto/4.jpg';  
+      $this->referal_count = '7'; 
+      $this->kvo_otziv = '3';
+      $this->web = 'www.website.ru'; 
+
+     
+     
+  }
+}
 
 // класс по управлению проектом
 class  sharaEngine  
 {
+
+
+}
+
+class Tovar
+{
+  var $id;                // id товара
+  var $img;               // путь к урл картинки
+  var $shotdesk;          // краткое описание
+  var $fulldesk;          // полное описание
+  var $dataBegin;         // начальная дата 
+  var $dataEnd;           // дата окончания
+  var $priceBegin;        // начальная цена
+  var $priceEnd;          // конечная цена со скидкой
+  var $summaBonuSpent;    // сумма бонусов которые можно потратить
+  var $location;          // локация мемстонахождения прохождения акции
+  var $idUser;            // id юзера который установил акцию.
+  var $table = 'akc';
+
+  var $in;    // mysql connector
+
+
+    function __construct($sql)
+    {
+      $this->in = $sql;
+    }
+
+  // получить товар по его Id
+  function getTovarId($idz,$sql)
+  {
+      $query = 'select * from '.$this->table.' where  Id = \''.$idz.'\'';
+      $sql; 
+     
+       if ($res = $sql->query($query)) 
+         {  
+           if ($row = $res->fetch_assoc())
+              {  
+                $tow = new Tovar($sql);
+                $tov->id = $row['Id'];
+                $tov->img = $row['Img'];
+                $tov->shotdesk = $row['Shotdesk'];
+                $tov->fulldesk = $row['Fulldesk'];
+                $tov->dataBegin = $row['DataBegin'];
+                $tov->dataEnd = $row['PriceBegin'];
+                $tov->priceBegin = $row['PriceBegin'];
+                $tov->priceEnd = $row['PriceEnd'];
+                $tov->summaBonuSpent = $row['SummBallSpent'];
+                $tov->location = $row['Location'];
+                $tov->idUser = $row['IdUser'];                
+                       
+                return $tov;
+              }
+            else return false;
+         }   
+       else return false;
+  }
+
+  // получить массив id товаров по Id usera
+  function getTovarUserId()
+  {
+      $query = 'select * from '.$this->table.' where Id = '.$this->id;
+      $sql = $this->in; 
+       $ar[0] = 0;
+       if ($res = $sql->query($query)) 
+         {  
+           $i = 0;
+
+           while($row = $res->fetch_assoc())
+             {
+              
+                $ar[$i] = $row['Id'];
+                $i++;  
+              } 
+        
+             return $ar;
+         }   
+         else return false; 
+  }
+
+   // получить весь список id товаров  в виде массива
+  function getArrayIdTovarAll()
+  {
+    $query = 'select * from '.$this->table ;
+      $sql = $this->in; 
+       $ar[0] = 0;
+       if ($res = $sql->query($query)) 
+         {  
+           $i = 0;
+
+           while($row = $res->fetch_assoc())
+             {
+              
+                $ar[$i] = $row['Id'];
+                $i++;  
+              } 
+        
+             return $ar;
+         }   
+         else return false; 
+
+  }
+
+  // сохранить товар в базе
+  function saveTovarInBase()
+  {
+      // UPDATE `users` SET `ParentId`='3', `Phone`='8911' WHERE `Id`='7';
+
+      $str1 = 'Id = '.$this->id.', Img = '.$this->img.', Shotdesk = '.$this->shotdesk.', Fulldesk = '.$this->fulldesk.', DataBegin = '.$this->DataBegin.', DataEnd = '.$this->dataEnd.', PriceBegin = '.$this->priceBegin.', PriceEnd = '.$this->priceEnd.', SummBallSpent = '.$this->summaBonuSpent.', Location = '.$this->location.', IdUser = '.$this->idUser; 
+       
+       $str2 = 'where Id = '.$this->id;
+      
+
+        $query = 'update '.$this->table.' set '.$str1.$str2;
+        $sql = $this->in; 
+      
+       
+          if ($res = $sql->query($query))    return 1001;
+          else return 'ошибка доступа к базе';
+  } 
 
 
 }

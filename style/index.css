@@ -7,7 +7,7 @@ body {
  width: 100%;
  height: 400%;
  color:#333;
- /*background: #fff;*/
+ background: #f2f5f7;
  font-family: "Segoe UI", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
  font-size:0.94em;
  line-height:135%;
@@ -52,14 +52,14 @@ a:hover {
 	 color: white;
  }
  #hnav{
-	 height:2em;
+	 height:2.5em;
 	 background: #222222;
 	 color: white;
  }
 .header{
  width:100%;
  /*background: #0DE547;*/
- height:6.5em;
+ height:7em;
  z-index: 4;
  }
  
@@ -73,6 +73,105 @@ a:hover {
  margin-top:0px;
 
  }
+ 
+ .wrapperinner{
+	border:0px solid #333;
+	width: 80%;
+	height: inherit;
+	margin:0 auto;
+	background: #f2f5f7;
+ }
+ .wrapperinnerleft{
+	 width: 68%;
+	 height: inherit;
+	 float:left;
+	 margin-top: 5%;
+ }
+ .wrapperinnerright{
+	 
+	width: 28%;
+	height: 50%;
+	float: right;
+	padding-top: 5%;
+	padding-left: 2em;
+	margin: 0 auto;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ /* выпадающее меню*/
+ .wrapper-dropdown {
+ /* размер и позиционирование */
+ position: relative;
+ width: 200px;
+ padding: 10px;
+ margin: 0 auto;
+
+ /*Общие стили */
+ background: #9bc7de;
+ color: #fff;
+ outline: none;
+ cursor: pointer;
+
+ /* Настройки шрифтов */
+ font-weight: bold;
+}
+
+.wrapper-dropdown:after {
+
+}
+
+.wrapper-dropdown-1 .dropdown {
+ /* размер и позиция */
+ position: absolute;
+/* top: 100%; */
+ left: 65.3%;
+ right: 20%;
+
+ /* Стили */
+ background: #fff;
+ font-weight: normal;
+
+ opacity: 0;
+ pointer-events: none;
+}
+
+.wrapper-dropdown-1 .dropdown li a {
+ display: block;
+ text-decoration: none;
+ color: #7abd2c;
+ padding: 3.2px 2px;
+}
+
+/* Состояние при наведении курсора */
+.wrapper-dropdown-1 .dropdown li:hover a {
+ background: #f3f8f8;
+}
+
+/* активное состояние */
+.wrapper-dropdown-1.active .dropdown {
+/*  opacity: 1;
+ pointer-events: auto; */
+}
+
+.wrapper-dropdown-1.active:after {
+ border-color: #9bc7de transparent;
+ border-width: 6px 6px 0 6px ;
+ margin-top: -3px;
+}
+
+.wrapper-dropdown-1.active {
+
+}
+
+ 
+ 
+ 
+ 
  
  .topMenuRight {
  /*height:57px;*/
@@ -117,7 +216,6 @@ a:hover {
 	position: absolute;
 	width: 60%;
 	height: inherit;
-	border-left: 1px solid #757575;
  }
  .navigation ul{
 	 text-align: center;
@@ -125,16 +223,22 @@ a:hover {
  }
  .navigation ul li{
 	 float: left;
-	 width: 16.5%;
-	 height: inherit;
+	 width: 19.9%;
+	 height: 100%;
 	 border-right: 1px solid #757575;
  }
  .navigation ul li:hover{
 	 background: #504D4D;
  }
+ .navigation.active ul li{
+	 /* border-right: 1px solid #757575; */
+ }
+.navigation.active ul li:hover{
+  /* background: none; */
+}
  .navigation ul li a{
 	 color: inherit;
-	 font-size: 10px;
+	 font-size: 12px;
  }
  
  
@@ -173,6 +277,7 @@ a:hover {
   #login #regform #dvform form{
 	  height: 100%;
 	  width: 100%;
+	  margin-top: 5px;
   }
   #login #regform #dvform form input{
 		width: 100%;
@@ -207,10 +312,6 @@ a:hover {
 	background:  #7abd2c;
 }
 
-
-
-
-
  #register{
 	 width:100%;
 	 height: 40em;
@@ -241,14 +342,15 @@ a:hover {
   #register #regform #dvform form{
 	  height: 100%;
 	  width: 100%;
+	  margin-top: 5px;
   }
   #register #regform #dvform form input{
 		width: 100%;
-		height: 15%;
+		height: 13%;
 		border: none;
 		border-bottom: 1px solid #e8e8e8;
 		text-align: center;
-		margin-bottom: 5%;
+		margin-bottom: 3%;
 }
  #register #regform #dvform form input:active {
 	 outline: none;
@@ -276,10 +378,165 @@ a:hover {
 }
 
 
+#referal{
+	width: 100%;
+	
+	
+}
 
+.userinfo{
+	width: 100%;
+	margin: 0 auto;
+	background: white;
+	border-radius: 5px;
+	border-right: 2px solid #dadddf;
+    border-bottom: 2px solid #dadddf;
+	padding-top: 3em;
+}
 
+.userinfo #info{
+	width:100%;
+	padding-bottom: 2em;
+}
 
+.userinfo #info p{
+	font-size: 13px;
+	width: 90%;
+}
+.userinfo #info img{
+	float: left;
+	width: 25px;
+	height:25px;
+}
+.userinfo #info span{
+	width: 100%;
+	
+}
 
+.userinfo #info ul{
+	width:100%;
+}
+
+.userinfo #info ul li{
+	width:100%;
+	margin: 1em 0 0 1em;
+}
+.userinfo #user{
+	width:100%;
+	margin: 0 auto;
+	text-align: center;
+	border-bottom: 1px solid #dadddf;
+	
+}
+.userinfo #like{
+	width:100%;
+	border-bottom: 1px solid #dadddf;
+	height: 2em;
+}
+
+.userinfo #like img{
+	float: left;
+	margin: 0.5em 0 0 1em;
+    height: 12px;
+    width: 12px;
+}
+
+.userinfo #like span{
+	float: right;
+    font-size: 12px;
+    color: #404031;
+    border-bottom: 1px solid #ccccc7;
+    margin-right: 0.5em;
+}
+
+.userinfo #user #foto{
+	margin: 0 auto;
+	height: 80px;
+    width: 80px;
+    background: url(../img/people.png) 40% 50% no-repeat;
+    background-color: #7abd2c;
+    border-radius: 50%;
+}
+.userinfo #user h1{
+	margin-bottom:0.5em;
+}
+.userinfo #user h4{
+	margin-bottom:0.5em;
+}
+
+.reflvl{
+	margin-bottom: 5%;
+	background: white;
+	border-radius: 5px;
+	border-right: 2px solid #dadddf;
+    border-bottom: 2px solid #dadddf;
+	padding-left:1em;
+	padding-right: 0.5em;
+}
+.reflvl section{
+	padding-top: 0.5em;
+	border-bottom: 1px solid #dadddf;
+}
+.reflist{
+	
+}
+
+.reflist ul{
+	width: 100%;
+}
+.reflist ul li{
+	width: 100%;
+	height: 4.5em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.imguser{
+	float: left;
+	height: 50px;
+	width: 50px;
+	background: url(../img/people.png) 40% 50% no-repeat;
+	background-color:  #7abd2c;
+	border-radius: 50%;
+}
+.namemailu{
+	float: left;
+	margin-left: 1.5em;
+}
+.balfriends{
+	float: right;
+	width: 30%;
+	height:100%;
+	color: #757575;
+}
+.balfriends div{
+	height:100%;
+	border: 1px solid darkgray;
+
+}
+.balfriends div p{
+	padding-top: 0.2em;
+}
+
+#refalllvl{
+	
+}
+.btreflev{
+	float: left;
+	padding-left: 1em;
+	padding-right: 1em;
+	font-size: 20px;
+	border-top: 2px solid white;
+	
+}
+
+.btreflev:active{
+	border-top: 2px solid #7abd2c;
+}
+
+/* .btreflev:focus{
+	border-top: 2px solid #7abd2c;
+} */
  
  #wrapper {
 	position: relative;
@@ -289,6 +546,8 @@ a:hover {
 	height: 100%;
 	background: #f2f5f7;
  }
+ 
+ 
 #shares{
 	
 	height: 5em;

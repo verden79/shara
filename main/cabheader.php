@@ -12,17 +12,16 @@
 		   	{ 
 		   		if ($us = $mysqli->isUserId($_SESSION['id']))
 			 		{
-			 			$isuser = true;
+
+			    		$isuser = true;
             	    	 $ref = $mysqli->getChaild($us->id); 
-            	    	 if ($ref[0] != 0) 	 $refs = $us->getCountReferal($mysqli);
-            	    	  else $refs = 0;
+            	    	 $refs = count($ref);
 			    		
 					}
 				else {$isuser = false; }	
 		   	}
 		   	else 
 		   		{  	$isuser = false; }
-
 
 
 
@@ -65,9 +64,9 @@ if ($isuser == true )
  
  echo '<script>';
  echo 's0 = '.json_encode($jsdata).' ; ';
-  if (isset($s1)) echo 's1 = '.json_encode($s1).' ; ';
-  if (isset($s2)) echo 's2 = '.json_encode($s2).' ; ';
-  if (isset($s3)) echo 's3 = '.json_encode($s3).' ; ';
+ echo 's1 = '.json_encode($s1).' ; ';
+ echo 's2 = '.json_encode($s2).' ; ';
+ echo 's3 = '.json_encode($s3).' ; ';
  echo '</script>';
 
 
