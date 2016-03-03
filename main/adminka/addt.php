@@ -15,11 +15,20 @@ $flocation  =  $_POST['flocation'];
 
 
 
-$uploaddir = '/var/www/img/uploads/';
-$uploadfile = $uploaddir . basename($_FILES['fimg']['name']);
+$uploaddir = '../../img/tovar/';
+$extension = substr(strrchr(basename($_FILES['fimg']['name']),'.'), 1);
+$name = time().md5(time()).'.'.$extension;
+$uploadfile = $uploaddir . $name;
 
-if (move_uploaded_file($_FILES['fimg']['tmp_name'], $uploadfile)) {
-    echo "Файл корректен и был успешно загружен.\n";
+$fimg = 'http://12shara.ru/img/tovar/'.$name;
+
+ if(is_uploaded_file($_FILES["fimg"]["tmp_name"]))
+ if (move_uploaded_file($_FILES['fimg']['tmp_name'], $uploadfile)) {
+  
+    echo 'загружен нормально - file - '.$fimg;
+
+	
+
 } else {
     echo "Возможная атака с помощью файловой загрузки!\n";
 }
@@ -44,11 +53,11 @@ $mysqli = new BaseUsers();
      
      echo '<br> <hr>';
 	 
-/*	 if ($tov->addTovar() == 1001) 
+	 if ($tov->addTovar() == 1001) 
 	     echo 'Акция успешно занесена в базу.'; 
 	 else { 
 	 		echo 'не удалось занести в базу <br>';
-	 	  } */
+	 	  } 
 	 
 	 echo '<br>';
 
@@ -72,4 +81,17 @@ echo '<br>','<a href = \'admtovar.php \'> Добавить еще товар  </
 echo ' <a  style = "margin-left:10px" href = \'../../index.php \'> На главную </a> ';
 
 $mysqli->close();
+ function getRandomFileName($path, $extension='')
+    {
+        $extension = $extension ? '.' . $extension : '';
+        $path = $path ? $path . '/' : '';
+ 
+        do {
+            $name = md5(microtime() . rand(0, 9999));
+            $file = $path . $name . $extension;
+        } while (file_exists($file));
+ 
+        return $name;
+    }
+
 ?>

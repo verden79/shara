@@ -99,11 +99,11 @@
             <button type="submit" class="btn btn-default btn-lg active">Отправить</button>
           </fieldset>
         </form>   
-
     </div>    
    
     
-    <div style="margin-left: 30px; margin-top: 50px; width:100%; margin-bottom:100px; fo " >
+
+    <div style="margin-left: 30px; margin-top: 50px; width:100%; margin-bottom:100px; " >
         <table class= "table table-hover" border =1px style = "width:95%;">
           <tr style="text-align: center; background-color: #dddddd;">
               <th>
@@ -152,7 +152,7 @@
 
                   echo '<td style="text-align: center">';   echo $tv->id;    echo '</td>';
 
-                  echo '<td>';   echo "<img src = $tv->img style = 'width:55%'>" ;    echo '</td>';
+                  echo '<td>';   echo "<img src = $tv->img style = 'width:55%'>";    echo '</td>';
 
                   echo '<td style="padding-left:7px">  ';   echo $tv->shotdesk;    echo '</td>';
 
@@ -168,7 +168,10 @@
                    echo '<td style="text-align: center">';  echo $tv->idUser;    echo '</td>';
                
                    echo '<td style="padding:5px">';  
-                   echo '<button type="button" class="btn btn-danger">Удалить</button>';
+                    echo "<form action='change.php' method = 'GET'>"; 
+                      echo "<button type='submit' class='btn btn-danger' value = $tv->id name = 'del' >Удалить</button> <br>"; 
+                      echo "<button type='submit' class='btn btn-success' value = $tv->id name = 'auk' >Аукцион</button>";
+                    echo '</form>';
                    echo '</td>'; 
                 
                 echo '</tr>';

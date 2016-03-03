@@ -435,8 +435,24 @@ class SendUser
 
 //********************************************************
 // класс по управлению проектом
-class  sharaEngine  
+class sharaEngine  
 {
+  public static $in;  // конект к басзе
+
+  
+  // удаляет товар из базы акций 
+  public static function delTovar($id)
+  {
+    // DELETE FROM `mydb`.`users` WHERE `Id`='16';
+        $query = 'delete from akc where Id = '.$id;
+        $sql = self::$in; 
+
+         if ($res = $sql->query($query))    return 1001;
+         else return 100;
+
+  }
+
+
 }
 
 
@@ -594,7 +610,7 @@ class Tovar
       var $idUser;            // id юзера который установил акцию.
       
       var $zvezd;             // количество звезд
-      var $kategoria;          // категория
+      var $kategoria;          // категория (вид категории еда / развлечение спорт / красота и уход / медецина / образование)
       var $kvo_otziv;
 
        public function __construct($tov)
