@@ -19,19 +19,20 @@
 <?php 
   include '../lib.php';
   $mysqli = new BaseUsers();
-  $tov = new Tovar($mysqli->in);
+ 
 ?>    
 
 
 <!-- форма для заполнения товара -->
     <div style="margin-left: 120px; margin-top: 50px; width:40%">
-        <form   class="form-inline" method="POST" action="addt.php">
+        <form   class="form-inline" method="POST" action="addt.php" enctype="multipart/form-data">
           <fieldset>
             
             <legend>Создать акцию</legend>
              <div class="form-group">
               <br>
-                <input type="text" placeholder="Картинка акции"> 
+                <label for="exampleInputEmail1">Картинка акции </label> <br>
+                 <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
                   <input type="file"  name="fimg" accept="image/*"> <!-- -->
 
                     <div class="form-group" style="margin-top:10px">
@@ -102,25 +103,80 @@
     </div>    
    
     
-    <div style="margin-left: 120px; margin-top: 50px; width:100%; margin-bottom:100px; " >
-        <table border = 1 style = "width:50%; background-color: #cccccc ">
-          <tr style="text-align: center">
-              <td>
-                Id 
-              </td>
+    <div style="margin-left: 30px; margin-top: 50px; width:100%; margin-bottom:100px; fo " >
+        <table class= "table table-hover" border =1px style = "width:95%;">
+          <tr style="text-align: center; background-color: #dddddd;">
+              <th>
+                 Id  
+              </th>
 
-              <td>
+              <th style ="width:15%">
                 Файл картинки 
-              </td>
+              </th>
 
-              <td>
+              <th>
                  короткое описание 
-              </td> 
+              </th> 
 
-              <td>
+              <th>
+                 Полное описание 
+              </th>
+
+              <th>
+                 Дата начальная <br>
+                 Дата конечная.
+              </th> 
+                <th>
+                 Цена начальная <br>
+                 Цена конечная.
+              </th> 
+
+              <th>
                 Id usera 
-              </td> 
+              </th>
+              
+              <th>
+                
+              </th> 
           <tr>
+
+          <?php
+             
+             $tov = new Tovar($mysqli->in);
+             $artov = $tov->getArrayIdTovarAll();
+             foreach($artov as $ind)
+             {
+                $tv = $tov->getTovarId($ind,$mysqli->in);
+
+                echo '<tr >';
+
+                  echo '<td style="text-align: center">';   echo $tv->id;    echo '</td>';
+
+                  echo '<td>';   echo "<img src = $tv->img style = 'width:55%'>" ;    echo '</td>';
+
+                  echo '<td style="padding-left:7px">  ';   echo $tv->shotdesk;    echo '</td>';
+
+                  echo '<td style="padding-left:7px"> ';   echo $tv->fulldesk;    echo '</td>';
+ 
+                  echo '<td style="text-align: center">';
+                              echo $tv->dataBegin.'<br> '.$tv->dataEnd;    echo '</td>';
+                
+                   echo '<td style="text-align: center">';
+                              echo $tv->priceBegin.'<br> '.$tv->priceEnd;    echo '</td>';                              
+
+                
+                   echo '<td style="text-align: center">';  echo $tv->idUser;    echo '</td>';
+               
+                   echo '<td style="padding:5px">';  
+                   echo '<button type="button" class="btn btn-danger">Удалить</button>';
+                   echo '</td>'; 
+                
+                echo '</tr>';
+             }
+
+
+
+          ?>
 
        </table>
     </div>

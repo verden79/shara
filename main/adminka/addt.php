@@ -1,6 +1,7 @@
 <?php
-include '../lib.php';
-$fimg = '../../img/tovar/1.jpg';
+include '../lib.php'; 
+
+$fimg = 'http://12shara.ru/img/tovar/1.jpg';
 $fidUser = $_POST['fidUser'];
 $fshotdesk  =  $_POST['fshotdesk'];
 $ffulldesk  =  $_POST['ffulldesk'];
@@ -12,8 +13,22 @@ $fball  =  $_POST['fball'];
 $flocation  =  $_POST['flocation'];
 
 
-$mysqli = new BaseUsers()
- $tov = new Tovar($mysql->in); 
+
+
+$uploaddir = '/var/www/img/uploads/';
+$uploadfile = $uploaddir . basename($_FILES['fimg']['name']);
+
+if (move_uploaded_file($_FILES['fimg']['tmp_name'], $uploadfile)) {
+    echo "Файл корректен и был успешно загружен.\n";
+} else {
+    echo "Возможная атака с помощью файловой загрузки!\n";
+}
+
+
+
+
+$mysqli = new BaseUsers();
+ $tov = new Tovar($mysqli->in); 
  
 	$tov->img = $fimg;
 	$tov->idUser =	$fidUser ;
@@ -26,9 +41,17 @@ $mysqli = new BaseUsers()
 	$tov->summaBonuSpent= $fball;
 	$tov->location = $flocation;  
 	$tov->$fidUser = $fidUser;
+     
+     echo '<br> <hr>';
+	 
+/*	 if ($tov->addTovar() == 1001) 
+	     echo 'Акция успешно занесена в базу.'; 
+	 else { 
+	 		echo 'не удалось занести в базу <br>';
+	 	  } */
+	 
+	 echo '<br>';
 
-	 if ($tov->saveTovarInBase() == 1001) 
-	    {echo 'Акция успешно занесена в базу.'}
 
 echo '<pre>';
 
@@ -48,5 +71,5 @@ print "</pre>";
 echo '<br>','<a href = \'admtovar.php \'> Добавить еще товар  </a> ';
 echo ' <a  style = "margin-left:10px" href = \'../../index.php \'> На главную </a> ';
 
-$mysql->close();
+$mysqli->close();
 ?>

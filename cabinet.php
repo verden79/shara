@@ -1,13 +1,15 @@
-﻿<!DOCTYPE html>
+﻿0<!DOCTYPE html>
 <html>
 <head>
  
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+ <script src="http://yastatic.net/jquery/2.1.1/jquery.min.js"></script>
+ <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
  
 <meta charset="utf-8" />
  <link rel="stylesheet" href="./style/index.css" />
  <script type="text/javascript" src="./js/index.js"></script>
 <title>Кабинет</title>
+<link rel="shortcut icon" href="./img/favicon.ico" />
  
 </head>
 <body>
@@ -15,12 +17,14 @@
 	 include 'main/lib.php';
 	 include 'main/header.php';
 ?>
+
+
 <header class="header">
 <div id="htop">
 	<div class="headerInner">
 	 <span>+16		
 		 <span id="htopspanc">Получите приложение SHARA для IOS и Android к себе на телефон</span>
-		 <span id="htopspanright"><div id="result" style="float: left; border-bottom: 2px dotted;">Москва</div><img style="float: right; margin-left: 0.5em; margin-top: 0.1em;" src="./img/x.png"></img></span>
+		 <span id="htopspanright"><div id="result" style="float: left; border-bottom: 2px dotted;">неопределен</div><img style="float: right; margin-left: 0.5em; margin-top: 0.1em;" src="./img/x.png"></img></span>
 	 </span>
 	</div>
 </div>
@@ -53,15 +57,27 @@
 				</div>
 		</div>
 		<div style="float: left; height:100%; width:10%;text-align: center; border-right: 1px solid white;">
-			<div style="margin-top: 0.8em;"><span style="margin-top: 0.8em; font-size: 0.8em; ">баллы: <b>
+			<div id="plain" style=""><span style="font-size: 0.8em; ">баллов:<b id="bal">
 			<!-- вставить балы пользователя -->
 			800
 			
 			</b></span></div>
+			<div id="noplain" style="display: none;">
+				<a id="nedobal" href="#">
+					<span style="font-size: 0.8em; color: red; "> 
+						<b id="bal">
+						<!-- вставить балы пользователя -->
+						125
+						
+						</b>
+					</span>
+					<span class="over">При активном примиум аккаунте получили бы больше баллов.</span>
+				</a>
+			</div>
 		</div>
 		<div  style="float: left; height:100%; width: 24%;">
 			<div>
-				<div style="float: left; margin-left: 1em; margin-top: 0.8em; width: 40%; height:40%; background: white; text-align: center; color: #333;"><b>
+				<div style="float: left; margin-left: 1em; margin-top: 0.8em; width: 40%; height:40%; background: white; text-align: center; color: #333;"><b id="akk">
 				<!-- вставить тип акаунта пользователя -->
 				premium
 				
@@ -134,203 +150,59 @@
 						<p>Рефералы</p>
 					</section>
 					<div class="reflist">
-						<ul>
-							<li>
-								<div style="float: left; width: 50%; height: 100%;">
-									<div class="imguser"></div>
-									<div class="namemailu">
-										<h4>Алексей</h4>
-										<p>aleksey@mail.ru</p>
-									</div>
-								</div>
-								<div style="float: right; width: 50%; height: 100%; text-align: center;">
-									<div class="balfriends">
-										<div>
-											<p><b>256</b></p>
-											<p><b>Доп. балы с премиум</b></p>
-										</div>
-									</div>
-									<div class="balfriends">
-										<div style="background: darkgray;">
-											<p><b>35 800</b></p>
-											<p><b>баллов</b></p>
-										</div>
-									</div>
-									<div class="balfriends">
-										<div>
-											<p><b>256</b></p>
-											<p><b>друзей</b></p>
-										</div>
-									</div>
-									
-								</div>
-							</li>
-							<li>
-								<div style="float: left; width: 50%; height: 100%;">
-									<div class="imguser"></div>
-									<div class="namemailu">
-										<h4>Алексей</h4>
-										<p>aleksey@mail.ru</p>
-									</div>
-								</div>
-								<div style="float: right; width: 50%; height: 100%; text-align: center;">
-									<div class="balfriends">
-										<div>
-											<p><b>256</b></p>
-											<p><b>Доп. балы с премиум</b></p>
-										</div>
-									</div>
-									<div class="balfriends">
-										<div style="background: darkgray;">
-											<p><b>35 800</b></p>
-											<p><b>баллов</b></p>
-										</div>
-									</div>
-									<div class="balfriends">
-										<div>
-											<p><b>256</b></p>
-											<p><b>друзей</b></p>
-										</div>
-									</div>
-									
-								</div>
-							</li>
-							<li>
-								<div style="float: left; width: 50%; height: 100%;">
-									<div class="imguser"></div>
-									<div class="namemailu">
-										<h4>Алексей</h4>
-										<p>aleksey@mail.ru</p>
-									</div>
-								</div>
-								<div style="float: right; width: 50%; height: 100%; text-align: center;">
-									<div class="balfriends">
-										<div>
-											<p><b>256</b></p>
-											<p><b>Доп. балы с премиум</b></p>
-										</div>
-									</div>
-									<div class="balfriends">
-										<div style="background: darkgray;">
-											<p><b>35 800</b></p>
-											<p><b>баллов</b></p>
-										</div>
-									</div>
-									<div class="balfriends">
-										<div>
-											<p><b>256</b></p>
-											<p><b>друзей</b></p>
-										</div>
-									</div>
-									
-								</div>
-							</li>
+						<ul id="lisreferal1">
+							<li id="lisreferal1li" onclick="ClikForList(this)">
 							
+								
+								
+							</li>
 						</ul>
+						<span>Ддля того чтоб пригласить друзей передайте им эту ссылку: 
+					   <?php			
+						
+						   if ($idz > 1 ) {
+							                  $sss = 'http://12shara.ru/register.php?ida='.$idz; 
+ 							   				  	echo "<a href = $sss> $sss </a>";		
+ 							   				  } else echo 'xxx'	;
+ 					   ?>
+ 					    </span>
+
 					</div>
 				</div>
-				<div id="refalllvl" class="reflvl">
+				<div id="ref2lvl" class="reflvl">
 					<section style="border:0;">
 						<p style="visibility: hidden;">Рефералы</p>
 					</section>
 					<div style="height: 2em; border-top: 1px solid #dadddf; margin-bottom: 1em;">
-						<span onfocus="javascript: this.border-top: 2px solid #7abd2c;" class="btreflev"><b>2 уровень</b></span>
-						<span class="btreflev"><b>3 уровень</b></span>
+						<span id="btref2" class="btreflev"><b>2 уровень</b></span>
 					</div>
 					<div class="reflist">
 					
 					
-						<ul>
-							<li>
-								<div style="float: left; width: 50%; height: 100%;">
-									<div class="imguser"></div>
-									<div class="namemailu">
-										<h4>Алексей</h4>
-										<p>aleksey@mail.ru</p>
-									</div>
-								</div>
-								<div style="float: right; width: 50%; height: 100%; text-align: center;">
-									<div class="balfriends">
-										<div>
-											<p><b>256</b></p>
-											<p><b>Доп. балы с премиум</b></p>
-										</div>
-									</div>
-									<div class="balfriends">
-										<div style="background: darkgray;">
-											<p><b>35 800</b></p>
-											<p><b>баллов</b></p>
-										</div>
-									</div>
-									<div class="balfriends">
-										<div>
-											<p><b>256</b></p>
-											<p><b>друзей</b></p>
-										</div>
-									</div>
-									
-								</div>
+						<ul id="lisreferal2">
+							<li id="lisreferal2li" onclick="Clik2ForList(this)">
+
 							</li>
-							<li>
-								<div style="float: left; width: 50%; height: 100%;">
-									<div class="imguser"></div>
-									<div class="namemailu">
-										<h4>Алексей</h4>
-										<p>aleksey@mail.ru</p>
-									</div>
-								</div>
-								<div style="float: right; width: 50%; height: 100%; text-align: center;">
-									<div class="balfriends">
-										<div>
-											<p><b>256</b></p>
-											<p><b>Доп. балы с премиум</b></p>
-										</div>
-									</div>
-									<div class="balfriends">
-										<div style="background: darkgray;">
-											<p><b>35 800</b></p>
-											<p><b>баллов</b></p>
-										</div>
-									</div>
-									<div class="balfriends">
-										<div>
-											<p><b>256</b></p>
-											<p><b>друзей</b></p>
-										</div>
-									</div>
-									
-								</div>
+							
+							
+						</ul>
+					</div>
+				</div>
+				
+				<div id="ref3lvl" class="reflvl">
+					<section style="border:0;">
+						<p style="visibility: hidden;">Рефералы</p>
+					</section>
+					<div style="height: 2em; border-top: 1px solid #dadddf; margin-bottom: 1em;">
+						<span id="btref3" class="btreflev"><b>3 уровень</b></span>
+					</div>
+					<div class="reflist">
+					
+						<ul id="lisreferal3">
+							<li id="lisreferal3li" onclick="Click3ForList(this)">
+
 							</li>
-							<li>
-								<div style="float: left; width: 50%; height: 100%;">
-									<div class="imguser"></div>
-									<div class="namemailu">
-										<h4>Алексей</h4>
-										<p>aleksey@mail.ru</p>
-									</div>
-								</div>
-								<div style="float: right; width: 50%; height: 100%; text-align: center;">
-									<div class="balfriends">
-										<div>
-											<p><b>256</b></p>
-											<p><b>Доп. балы с премиум</b></p>
-										</div>
-									</div>
-									<div class="balfriends">
-										<div style="background: darkgray;">
-											<p><b>35 800</b></p>
-											<p><b>баллов</b></p>
-										</div>
-									</div>
-									<div class="balfriends">
-										<div>
-											<p><b>256</b></p>
-											<p><b>друзей</b></p>
-										</div>
-									</div>
-									
-								</div>
-							</li>
+							
 							
 						</ul>
 					</div>
@@ -340,9 +212,11 @@
 		<div class="wrapperinnerright">
 			<div class="userinfo">
 				<div id="user">
-					<div id="foto"></div>
-					<h1>Алексей</h1>
-					<h4>aleksey@mail.ru</h4>
+					<div id="foto">
+						<img id="fotos"></img>
+					</div>
+					<h1 id="nameprof">none</h1>
+					<h4 id="mailprof">no</h4>
 				</div>
 				<div id="like">
 					<img src="./img/star1.png"></img>
@@ -350,17 +224,17 @@
 					<img src="./img/star.png" ></img>
 					<img src="./img/star.png" ></img>
 					<img src="./img/star.png" ></img>
-					<span>15 отзывов</span>
+					<span id = "otzuv">15 отзывов</span>
 				</div>
-				<div id="info">
+				<div id="infoprof">
 					<ul>
 						<li>
 							<img src="./img/phone.png"></img>
-							<p style="margin-left: 3em;">+7260000000</p>
+							<p  id="phoneprof"style="margin-left: 3em;">+7260000000</p>
 						</li>
 						<li>
 							<img src="./img/phone.png"></img>
-							<p style="text-decoration: underline;margin-left: 3em;"> http://website.ru</p>
+							<p id="websiteprof" style="text-decoration: underline;margin-left: 3em;"> http://website.ru</p>
 						</li>
 						<li>
 							<p style="font-style: italic;text-align: justify;">
@@ -375,7 +249,7 @@
 	</div><!-- Конец хидер инер -->
 </section><!-- Конец врапер -->
  
-
+<script type="text/javascript" src="./js/init.js"></script>
  
 </body>
 </html>

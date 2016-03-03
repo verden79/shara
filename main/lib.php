@@ -192,8 +192,8 @@ class BaseUsers
  
 
 
- 	  $str1	= ' ('.pLogin.','.pPassword.','.pEmail.','.pParentId.','.pBonus.','.pPhone.','.pPremium.') ';
-	  $str2	= 'values(\''.$log.'\',\''.$pass.'\',\''.$email.'\',\''.$pId.'\',\''.$bon.'\',\''.$phon.'\',\'0\')';	
+   	  $str1	= ' ('.pLogin.','.pPassword.','.pEmail.','.pParentId.','.pBonus.','.pPhone.','.pPremium.') ';
+  	  $str2	= 'values(\''.$log.'\',\''.$pass.'\',\''.$email.'\',\''.$pId.'\',\''.$bon.'\',\''.$phon.'\',\'0\')';	
 
       $query = 'insert into '. $this->table.$str1.$str2;
       $sql = $this->in; 
@@ -376,7 +376,7 @@ class User
 
   function getCountReferal($con)  // подсчитывает количество рефералов юзера
   {
-    $i=0; 
+      $i=0; 
         $r1 = $con->getChaild($this->id);   
         if ( $r1[0] != 0) 
             foreach($r1 as $ch1)
@@ -429,18 +429,18 @@ class SendUser
       $this->referal_count = '7'; 
       $this->kvo_otziv = '3';
       $this->web = 'www.website.ru'; 
-
-     
-     
   }
 }
 
+
+//********************************************************
 // класс по управлению проектом
 class  sharaEngine  
 {
-
-
 }
+
+
+//********************************************************
 
 class Tovar
 {
@@ -475,13 +475,13 @@ class Tovar
          {  
            if ($row = $res->fetch_assoc())
               {  
-                $tow = new Tovar($sql);
+                $tov = new Tovar($sql);
                 $tov->id = $row['Id'];
                 $tov->img = $row['Img'];
                 $tov->shotdesk = $row['Shotdesk'];
                 $tov->fulldesk = $row['Fulldesk'];
                 $tov->dataBegin = $row['DataBegin'];
-                $tov->dataEnd = $row['PriceBegin'];
+                $tov->dataEnd = $row['DataEnd'];
                 $tov->priceBegin = $row['PriceBegin'];
                 $tov->priceEnd = $row['PriceEnd'];
                 $tov->summaBonuSpent = $row['SummBallSpent'];
@@ -507,8 +507,7 @@ class Tovar
 
            while($row = $res->fetch_assoc())
              {
-              
-                $ar[$i] = $row['Id'];
+               $ar[$i] = $row['Id'];
                 $i++;  
               } 
         
@@ -545,12 +544,13 @@ class Tovar
   {
       // UPDATE `users` SET `ParentId`='3', `Phone`='8911' WHERE `Id`='7';
 
-      $str1 = 'Id = '.$this->id.', Img = '.$this->img.', Shotdesk = '.$this->shotdesk.', Fulldesk = '.$this->fulldesk.', DataBegin = '.$this->DataBegin.', DataEnd = '.$this->dataEnd.', PriceBegin = '.$this->priceBegin.', PriceEnd = '.$this->priceEnd.', SummBallSpent = '.$this->summaBonuSpent.', Location = '.$this->location.', IdUser = '.$this->idUser; 
+      $str1 = 'Id = '.$this->id.', Img = '.$this->img.', Shotdesk = '.$this->shotdesk.', Fulldesk = '.$this->fulldesk.', DataBegin = '.$this->dataBegin.', DataEnd = '.$this->dataEnd.', PriceBegin = '.$this->priceBegin.', PriceEnd = '.$this->priceEnd.', SummBallSpent = '.$this->summaBonuSpent.', Location = '.$this->location.', IdUser = '.$this->idUser; 
        
-       $str2 = 'where Id = '.$this->id;
+       $str2 = ' where Id = '.$this->id;
       
 
         $query = 'update '.$this->table.' set '.$str1.$str2;
+        // echo '<br>'.$query.'<br>';
         $sql = $this->in; 
       
        
@@ -558,8 +558,66 @@ class Tovar
           else return 'ошибка доступа к базе';
   } 
 
+   // добавить товар в базу 
+   function addTovar()
+   {
+   //  INSERT INTO table_name (column1,column2,column3,...)  VALUES (value1,value2,value3,...);
 
-}
+     $str1 = ' (Img,Shotdesk,Fulldesk,DataBegin,DataEnd,PriceBegin,PriceEnd,SummBallSpent,Location,IdUser)';
+     $str2 = ' values(\''.$this->img.'\',\''.$this->shotdesk.'\',\''.$this->fulldesk.'\',\''.$this->dataBegin.'\',\''.$this->dataEnd.'\',\''.$this->priceBegin.'\',\''.$this->priceEnd.'\',\''.$this->summaBonuSpent.'\',\''.$this->location.'\',\''.$this->idUser.'\')';  
+
+      $query = 'insert into '. $this->table.$str1.$str2;
+      echo '<br>'.$query.'<br>';
+      $sql = $this->in; 
+      
+     
+       if ($res = $sql->query($query))    return 1001;
+       else return 'ошибка доступа к базе';
+    }
+
+   } 
+
+  //*******************************************************
+  // класс необходимый для пересылки товара
+  class SentTovar
+  {
+      var $id;                // id товара
+      var $img;               // путь к урл картинки
+      var $shotdesk;          // краткое описание
+      var $fulldesk;          // полное описание
+      var $dataBegin;         // начальная дата 
+      var $dataEnd;           // дата окончания
+      var $priceBegin;        // начальная цена
+      var $priceEnd;          // конечная цена со скидкой
+      var $summaBonuSpent;    // сумма бонусов которые можно потратить
+      var $location;          // локация мемстонахождения прохождения акции
+      var $idUser;            // id юзера который установил акцию.
+      
+      var $zvezd;             // количество звезд
+      var $kategoria;          // категория
+      var $kvo_otziv;
+
+       public function __construct($tov)
+       {
+          $this->id = $tov->id ;
+          $this->img = $tov->img ;
+          $this->shotdesk = $tov->shotdesk;
+          $this->fulldesk = $tov->fulldesk;
+          $this->dataBegin = $tov->dataBegin;
+          $this->dataEnd = $tov->dataEnd ;
+          $this->priceBegin = $tov->priceBegin;
+          $this->priceEnd = $tov->priceEnd;
+          $this->summaBonuSpent = $tov->summaBonuSpent;
+          $this->location = $tov->location;
+          $this->idUser =  $tov->idUser;     
+          
+          $this->zvezd =     rand(1,5);   // '2';
+          $this->kategoria  = '1';
+          $this->kvo_otziv = rand(0,100); 
+       }
+
+  }// конец класса SentTovar
+
 
 
 ?>

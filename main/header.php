@@ -13,6 +13,9 @@
 		   		if ($us = $mysqli->isUserId($_SESSION['id']))
 			 		{
 			 			$isuser = true;
+			 			 
+			 			 $idz = $us->id; // для пригласительной ссылки 
+
             	    	 $ref = $mysqli->getChaild($us->id); 
             	    	 if ($ref[0] != 0) 	 $refs = $us->getCountReferal($mysqli);
             	    	  else $refs = 0;
@@ -21,7 +24,7 @@
 				else {$isuser = false; }	
 		   	}
 		   	else 
-		   		{  	$isuser = false; }
+		   		{  	$isuser = false;  }
 
 
 
@@ -52,13 +55,19 @@ if ($isuser == true )
 							 		$t3 = $mysqli->isUserId($ch2);
 				 					 $a3r = $mysqli->getChaild($t3->id); 	
 							
-									$s3[] = new SendUser($t3);
+									$su = new SendUser($t3);
+									$su->referal_count = $t3->getCountReferal($mysqli); 
+									$s3[] = $su;
 							}
 
-					$s2[] = new SendUser($t2);
+					$su = new SendUser($t2);
+					$su->referal_count = $t2->getCountReferal($mysqli); 			
+					$s2[] = $su;
 			}
 
-		$s1[] = new SendUser($t1);
+		$su = new SendUser($t1);
+		$su->referal_count = $t1->getCountReferal($mysqli); 			
+		$s1[] = $su;
 		
 	}
 
